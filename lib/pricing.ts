@@ -15,25 +15,34 @@ export const SHIPPING_FLAT = 50
 
 export const pricing: Record<string, ProductPricing> = {
   'hair-color-spray': {
+    // يبدأ 150 للعبوة، وينزل 5 جنيه في سعر العبوة مع كل عبوة إضافية
     tiers: [
-      { qty: 1, label: 'عبوة', price: 120 },
-      { qty: 2, label: 'عبوتين', price: 230 },
-      { qty: 3, label: '3 عبوات', price: 330 },
-      { qty: 4, label: '4 عبوات', price: 420 },
-      { qty: 5, label: '5 عبوات', price: 500 },
+      { qty: 1, label: 'عبوة', price: 150 },
+      { qty: 2, label: 'عبوتين', price: 290 },
+      { qty: 3, label: '3 عبوات', price: 420 },
+      { qty: 4, label: '4 عبوات', price: 540 },
+      { qty: 5, label: '5 عبوات', price: 650 },
+      { qty: 6, label: '6 عبوات', price: 750 },
+      { qty: 7, label: '7 عبوات', price: 840 },
+      { qty: 8, label: '8 عبوات', price: 920 },
+      { qty: 9, label: '9 عبوات', price: 990 },
     ],
-    bundle: { label: 'جميع الألوان', price: 800, qty: 9 },
+    bundle: { label: 'جميع الألوان', price: 990, qty: 9 },
   },
   'hair-color-cream': {
+    // يبدأ 175 للعبوة، وينزل 5 جنيه في سعر العبوة مع كل عبوة إضافية
     tiers: [
-      { qty: 1, label: 'عبوة', price: 180 },
-      { qty: 2, label: 'عبوتين', price: 350 },
-      { qty: 3, label: '3 عبوات', price: 510 },
-      { qty: 4, label: '4 عبوات', price: 660 },
-      { qty: 5, label: '5 عبوات', price: 800 },
-      { qty: 6, label: '6 عبوات', price: 930 },
+      { qty: 1, label: 'عبوة', price: 175 },
+      { qty: 2, label: 'عبوتين', price: 340 },
+      { qty: 3, label: '3 عبوات', price: 495 },
+      { qty: 4, label: '4 عبوات', price: 640 },
+      { qty: 5, label: '5 عبوات', price: 775 },
+      { qty: 6, label: '6 عبوات', price: 900 },
+      { qty: 7, label: '7 عبوات', price: 1015 },
+      { qty: 8, label: '8 عبوات', price: 1120 },
+      { qty: 9, label: '9 عبوات', price: 1215 },
     ],
-    bundle: { label: 'جميع الألوان', price: 1350, qty: 9 },
+    bundle: { label: 'جميع الألوان', price: 1215, qty: 9 },
   },
   'permanent-hair-dye': {
     tiers: [
