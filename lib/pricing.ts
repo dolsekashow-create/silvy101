@@ -30,19 +30,19 @@ export const pricing: Record<string, ProductPricing> = {
     bundle: { label: 'جميع الألوان', price: 990, qty: 9 },
   },
   'hair-color-cream': {
-    // يبدأ 175 للعبوة، وينزل 5 جنيه في سعر العبوة مع كل عبوة إضافية
+    // يبدأ 200 للعبوة، وينزل 5 جنيه في سعر العبوة مع كل عبوة إضافية
     tiers: [
-      { qty: 1, label: 'عبوة', price: 175 },
-      { qty: 2, label: 'عبوتين', price: 340 },
-      { qty: 3, label: '3 عبوات', price: 495 },
-      { qty: 4, label: '4 عبوات', price: 640 },
-      { qty: 5, label: '5 عبوات', price: 775 },
-      { qty: 6, label: '6 عبوات', price: 900 },
-      { qty: 7, label: '7 عبوات', price: 1015 },
-      { qty: 8, label: '8 عبوات', price: 1120 },
-      { qty: 9, label: '9 عبوات', price: 1215 },
+      { qty: 1, label: 'عبوة', price: 200 },
+      { qty: 2, label: 'عبوتين', price: 390 },
+      { qty: 3, label: '3 عبوات', price: 570 },
+      { qty: 4, label: '4 عبوات', price: 740 },
+      { qty: 5, label: '5 عبوات', price: 900 },
+      { qty: 6, label: '6 عبوات', price: 1050 },
+      { qty: 7, label: '7 عبوات', price: 1190 },
+      { qty: 8, label: '8 عبوات', price: 1320 },
+      { qty: 9, label: '9 عبوات', price: 1440 },
     ],
-    bundle: { label: 'جميع الألوان', price: 1215, qty: 9 },
+    bundle: { label: 'جميع الألوان', price: 1440, qty: 9 },
   },
   'permanent-hair-dye': {
     tiers: [
@@ -58,6 +58,13 @@ export const pricing: Record<string, ProductPricing> = {
       { qty: 2, label: 'عبوتين', price: 380 },
       { qty: 3, label: '3 عبوات', price: 540 },
     ],
+  },
+  // سعر ثابت بدون عروض كميات: أي عدد = 180 × العدد
+  'whitening-soap': {
+    tiers: [{ qty: 1, label: 'صابونة', price: 180 }],
+  },
+  'gold-soap': {
+    tiers: [{ qty: 1, label: 'صابونة', price: 180 }],
   },
 }
 
@@ -93,12 +100,19 @@ export function priceForQuantity(slug: string, qty: number): number | null {
 }
 
 /** وصف الكمية: «عبوة» أو «3 عبوات» حسب جدول العروض */
+/** جمع وحدة القياس المستخدمة في جدول العروض */
+const UNIT_PLURALS: Record<string, string> = {
+  عبوة: 'عبوات',
+  قطعة: 'قطع',
+  صابونة: 'صابونات',
+}
+
 export function quantityLabel(slug: string, qty: number) {
   const p = pricing[slug]
   const exact = p?.tiers.find((t) => t.qty === qty)
   if (exact) return exact.label
-  const unit = p?.tiers[0]?.label === 'قطعة' ? 'قطعة' : 'عبوة'
-  return `${qty} ${unit === 'قطعة' ? 'قطع' : 'عبوات'}`
+  const unit = p?.tiers[0]?.label ?? 'عبوة'
+  return `${qty} ${UNIT_PLURALS[unit] ?? 'عبوات'}`
 }
 
 export type OrderItem = { color: string; qty: number }

@@ -45,6 +45,8 @@ public/images/   الشعار وصور المنتجات
 | كريم تلوين الشعر المؤقت | `hair-color-cream` |
 | صبغة الشعر الدائمة | `permanent-hair-dye` |
 | اسبراي تفتيح البشرة | `skin-whitening-spray` |
+| صابونة GD لتبييض الجسم | `whitening-soap` |
+| صابونة الذهب K24 | `gold-soap` |
 
 ### من GitHub مباشرة
 

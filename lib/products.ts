@@ -44,6 +44,8 @@ export const categories = [
   { label: 'كريم تلوين الشعر المؤقت', slug: 'hair-color-cream' },
   { label: 'صبغة الشعر الدائمة', slug: 'permanent-hair-dye' },
   { label: 'اسبراي تفتيح البشرة', slug: 'skin-whitening-spray' },
+  { label: 'صابونة GD لتبييض الجسم', slug: 'whitening-soap' },
+  { label: 'صابونة الذهب K24', slug: 'gold-soap' },
 ]
 
 /** الفئات المستخدمة في فلتر صفحة المنتجات */
