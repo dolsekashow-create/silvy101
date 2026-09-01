@@ -101,7 +101,7 @@ export function Hero({ sprayColors = [] }: { sprayColors?: ProductColor[] }) {
           />
           <div className="overflow-hidden rounded-[2.5rem] border border-white/60 shadow-2xl">
             <Image
-              src="/images/hair-color-spray/01.jpg"
+              src="/images/hair-color-spray/01.webp"
               alt="اسبراي تلوين الشعر المؤقت من سيلفي كوزمتكس بسبعة ألوان"
               width={800}
               height={640}

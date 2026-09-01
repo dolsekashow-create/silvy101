@@ -159,7 +159,7 @@ export function AboutBrand() {
         <ScrollReveal className="order-1 md:order-2" delay={0.15}>
           <div className="relative overflow-hidden rounded-3xl shadow-lg">
             <Image
-              src="/images/permanent-hair-dye/01.jpg"
+              src="/images/permanent-hair-dye/01.webp"
               alt="مجموعة صبغات دينا داي بزيت الأرجان من سيلفي كوزمتكس"
               width={640}
               height={430}

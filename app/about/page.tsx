@@ -89,7 +89,7 @@ export default function AboutPage() {
           </div>
           <div className="overflow-hidden rounded-3xl shadow-lg">
             <Image
-              src="/images/hair-color-spray/01.jpg"
+              src="/images/hair-color-spray/01.webp"
               alt="اسبراي تلوين الشعر المؤقت من سيلفي كوزمتكس بسبعة ألوان"
               width={640}
               height={512}
