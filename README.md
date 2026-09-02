@@ -43,6 +43,7 @@ public/images/   الشعار وصور المنتجات
 | --- | --- |
 | اسبراي تلوين الشعر المؤقت | `hair-color-spray` |
 | كريم تلوين الشعر المؤقت | `hair-color-cream` |
+| جيل الشعر الأسود | `black-hair-gel` |
 | صبغة الشعر الدائمة | `permanent-hair-dye` |
 | اسبراي تفتيح البشرة | `skin-whitening-spray` |
 | صابونة GD لتبييض الجسم | `whitening-soap` |

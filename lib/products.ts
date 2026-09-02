@@ -42,6 +42,7 @@ export const products: Product[] = productMeta.map((meta) => {
 export const categories = [
   { label: 'اسبراي تلوين الشعر المؤقت', slug: 'hair-color-spray' },
   { label: 'كريم تلوين الشعر المؤقت', slug: 'hair-color-cream' },
+  { label: 'جيل الشعر الأسود', slug: 'black-hair-gel' },
   { label: 'صبغة الشعر الدائمة', slug: 'permanent-hair-dye' },
   { label: 'اسبراي تفتيح البشرة', slug: 'skin-whitening-spray' },
   { label: 'صابونة GD لتبييض الجسم', slug: 'whitening-soap' },

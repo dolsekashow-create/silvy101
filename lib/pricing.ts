@@ -44,6 +44,20 @@ export const pricing: Record<string, ProductPricing> = {
     ],
     bundle: { label: 'جميع الألوان', price: 1440, qty: 9 },
   },
+  'black-hair-gel': {
+    // يبدأ 200 للعبوة، وينزل 5 جنيه في سعر العبوة مع كل عبوة إضافية
+    tiers: [
+      { qty: 1, label: 'عبوة', price: 200 },
+      { qty: 2, label: 'عبوتين', price: 390 },
+      { qty: 3, label: '3 عبوات', price: 570 },
+      { qty: 4, label: '4 عبوات', price: 740 },
+      { qty: 5, label: '5 عبوات', price: 900 },
+      { qty: 6, label: '6 عبوات', price: 1050 },
+      { qty: 7, label: '7 عبوات', price: 1190 },
+      { qty: 8, label: '8 عبوات', price: 1320 },
+      { qty: 9, label: '9 عبوات', price: 1440 },
+    ],
+  },
   'permanent-hair-dye': {
     tiers: [
       { qty: 1, label: 'قطعة', price: 150 },
