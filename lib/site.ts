@@ -12,7 +12,7 @@ export const SITE = {
 export const WHATSAPP_NUMBER = '201283658904'
 export const WHATSAPP_DISPLAY = '01283658904'
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
-export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=100064127946084'
+export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61593870216939'
 
 /** رابط واتساب مع رسالة جاهزة */
 export function whatsappLink(message?: string) {
