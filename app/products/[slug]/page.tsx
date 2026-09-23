@@ -7,6 +7,7 @@ import { FeaturesGrid, UsageStepper, WarningsCard } from '@/components/product-d
 import { ProductCard } from '@/components/product-card'
 import { ProductGallery } from '@/components/product-gallery'
 import { OrderForm } from '@/components/order-form'
+import { TrackViewContent } from '@/components/track-view-content'
 import { WhatsAppIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { startingPrice, SHIPPING_FLAT } from '@/lib/pricing'
@@ -189,6 +190,7 @@ export default async function ProductPage({
         <ScrollReveal>
           <section id="order" className="scroll-mt-24">
             <OrderForm product={product} />
+            <TrackViewContent slug={product.slug} name={product.name} price={startingPrice(product.slug)} />
           </section>
         </ScrollReveal>
       </div>

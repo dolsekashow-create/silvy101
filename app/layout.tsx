@@ -6,6 +6,7 @@ import { Footer } from '@/components/footer'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { PageTransition } from '@/components/page-transition'
 import { JsonLd } from '@/components/json-ld'
+import { MetaPixel } from '@/components/meta-pixel'
 import { FACEBOOK_URL, SITE, WHATSAPP_DISPLAY } from '@/lib/site'
 import './globals.css'
 
@@ -102,6 +103,7 @@ export default function RootLayout({
         <WhatsAppButton />
         <JsonLd data={organizationSchema} />
         {process.env.NODE_ENV === 'production' && <Analytics />}
+        <MetaPixel />
       </body>
     </html>
   )
