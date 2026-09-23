@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { WHATSAPP_URL } from '@/lib/site'
 
 const links = [
   { href: '/', label: 'الرئيسية' },
@@ -56,9 +55,7 @@ export function Navbar() {
 
         <div className="hidden md:block">
           <Button asChild className="rounded-full bg-gradient-brand text-primary-foreground hover:opacity-90">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              اطلبي الآن
-            </a>
+            <Link href="/products">اطلبي الآن</Link>
           </Button>
         </div>
 
@@ -92,9 +89,9 @@ export function Navbar() {
             ))}
             <li className="pt-2">
               <Button asChild className="w-full rounded-full bg-gradient-brand text-primary-foreground">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                <Link href="/products" onClick={() => setOpen(false)}>
                   اطلبي الآن
-                </a>
+                </Link>
               </Button>
             </li>
           </ul>

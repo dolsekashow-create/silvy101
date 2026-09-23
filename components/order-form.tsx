@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CircleCheckBig, Loader2, Minus, Plus, ShoppingBag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,7 @@ import {
   GOVERNORATES,
 } from '@/lib/pricing'
 import { cn } from '@/lib/utils'
+import { track } from '@/lib/meta-pixel'
 import type { Product } from '@/lib/product-types'
 
 type Status = 'idle' | 'sending' | 'done'
@@ -29,6 +30,7 @@ export function OrderForm({ product }: { product: Product }) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState<string | null>(null)
   const [orderNo, setOrderNo] = useState<string | null>(null)
+  const checkoutTracked = useRef(false)
 
   const items: { color: string; qty: number }[] = Object.entries(
     quantities as Record<string, number>,
@@ -44,7 +46,21 @@ export function OrderForm({ product }: { product: Product }) {
       : 0
   const total = itemsTotal + SHIPPING_FLAT
 
+  // أول تفاعل مع فورم الطلب = بدأ الطلب (InitiateCheckout)
+  function trackCheckoutStart() {
+    if (checkoutTracked.current) return
+    checkoutTracked.current = true
+    track('InitiateCheckout', {
+      content_ids: [product.slug],
+      content_name: product.name,
+      content_type: 'product',
+      currency: 'EGP',
+      ...(price ? { value: price.tiers[0]?.price } : {}),
+    })
+  }
+
   function changeQty(color: string, delta: number) {
+    trackCheckoutStart()
     setIsBundle(false)
     setQuantities((current: Record<string, number>) => {
       const next = Math.max(0, Math.min(MAX_QTY, (current[color] ?? 0) + delta))
@@ -87,6 +103,18 @@ export function OrderForm({ product }: { product: Product }) {
       if (!res.ok) throw new Error(json.error ?? 'تعذر إرسال الطلب.')
       setOrderNo(json.orderNo)
       setStatus('done')
+      track(
+        'Purchase',
+        {
+          content_ids: [product.slug],
+          content_name: product.name,
+          content_type: 'product',
+          currency: 'EGP',
+          value: json.total,
+          num_items: isBundle ? (price?.bundle?.qty ?? 1) : totalQty,
+        },
+        `order-${json.orderNo}`,
+      )
     } catch (err) {
       setError(err instanceof Error ? err.message : 'تعذر إرسال الطلب.')
       setStatus('idle')
@@ -125,6 +153,7 @@ export function OrderForm({ product }: { product: Product }) {
   return (
     <form
       onSubmit={handleSubmit}
+      onFocusCapture={trackCheckoutStart}
       className="w-full rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8"
     >
       <h2 className="mb-5 flex items-center gap-2 text-xl font-extrabold">

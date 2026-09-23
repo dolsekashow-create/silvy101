@@ -11,6 +11,7 @@ import {
   type OrderItem,
 } from '@/lib/pricing'
 import { insertOrder } from '@/lib/supabase'
+import { sendPurchaseEvent } from '@/lib/meta-capi'
 
 export const runtime = 'nodejs'
 
@@ -139,6 +140,16 @@ export async function POST(request: Request) {
       items_total: itemsTotal,
       shipping: SHIPPING_FLAT,
       total,
+    })
+
+    await sendPurchaseEvent(request, {
+      orderNo: String(order.order_no),
+      value: total,
+      slug: product.slug,
+      productName: product.name,
+      quantity,
+      phone: phoneRaw,
+      customerName,
     })
 
     return NextResponse.json({ orderNo: order.order_no, total })
